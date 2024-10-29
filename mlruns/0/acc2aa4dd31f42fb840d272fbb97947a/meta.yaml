@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/acc2aa4dd31f42fb840d272fbb97947a/artifacts
+end_time: 1730161142767
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: acc2aa4dd31f42fb840d272fbb97947a
+run_name: Logistic Regression
+run_uuid: acc2aa4dd31f42fb840d272fbb97947a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730161140913
+status: 4
+tags: []
+user_id: mohamedaminemrabet

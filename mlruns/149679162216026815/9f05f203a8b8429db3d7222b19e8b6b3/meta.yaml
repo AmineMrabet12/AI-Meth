@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/149679162216026815/9f05f203a8b8429db3d7222b19e8b6b3/artifacts
+end_time: 1730339565596
+entry_point_name: ''
+experiment_id: '149679162216026815'
+lifecycle_stage: active
+run_id: 9f05f203a8b8429db3d7222b19e8b6b3
+run_name: Gradient Boosting
+run_uuid: 9f05f203a8b8429db3d7222b19e8b6b3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730339565097
+status: 3
+tags: []
+user_id: mohamedaminemrabet

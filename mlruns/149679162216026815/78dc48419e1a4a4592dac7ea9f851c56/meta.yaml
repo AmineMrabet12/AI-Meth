@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/149679162216026815/78dc48419e1a4a4592dac7ea9f851c56/artifacts
+end_time: 1730340419420
+entry_point_name: ''
+experiment_id: '149679162216026815'
+lifecycle_stage: active
+run_id: 78dc48419e1a4a4592dac7ea9f851c56
+run_name: Random Forest
+run_uuid: 78dc48419e1a4a4592dac7ea9f851c56
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730340419112
+status: 3
+tags: []
+user_id: mohamedaminemrabet

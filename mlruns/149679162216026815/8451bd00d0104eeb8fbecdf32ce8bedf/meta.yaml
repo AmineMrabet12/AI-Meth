@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/149679162216026815/8451bd00d0104eeb8fbecdf32ce8bedf/artifacts
+end_time: 1730339565953
+entry_point_name: ''
+experiment_id: '149679162216026815'
+lifecycle_stage: active
+run_id: 8451bd00d0104eeb8fbecdf32ce8bedf
+run_name: XGBoost
+run_uuid: 8451bd00d0104eeb8fbecdf32ce8bedf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730339565617
+status: 3
+tags: []
+user_id: mohamedaminemrabet

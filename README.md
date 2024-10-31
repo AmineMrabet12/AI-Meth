@@ -9,19 +9,39 @@ This project analyzes e-commerce customer data to build machine learning models,
 - [Data Preparation](#data-preparation)
 - [Training and Evaluation](#training-and-evaluation)
 - [Deployment with MLflow](#deployment-with-mlflow)
-- [Model Tracking](#model-tracking)
 - [Dockerization](#dockerization)
+- [Documentation with Sphinx](#documentation-with-sphinx)
+- [model interpretability with shap](#model-interpretability-with-shap)
 
 ---
 
 ## Project Overview
 
-This project leverages machine learning to analyze and predict customer behaviors using e-commerce data. The project includes:
+This project leverages machine learning techniques to analyze and predict customer behaviors using e-commerce data. The primary goals include understanding customer patterns and predicting future purchasing decisions based on various features within the dataset. The project encompasses the following key components:
 
-1. **Data Preparation and Preprocessing**: Prepares the data by encoding categorical features and splitting it into training and testing sets.
-2. **Model Training**: Trains various classification models on the dataset.
-3. **Evaluation**: Evaluates models based on metrics such as `accuracy`, `F1 score`, and `ROC AUC`.
-4. **Deployment**: Models are versioned and tracked using `MLflow`, and Docker is used for containerization to allow easy deployment.
+1. **Data Preparation and Preprocessing**: 
+   - Cleans and prepares the data by handling missing values, encoding categorical features, and splitting the dataset into training and testing sets to ensure effective model training and evaluation.
+
+2. **Model Training**: 
+   - Trains a variety of classification models, including Logistic Regression, Support Vector Machines (SVM), Decision Trees, and Gradient Boosting Classifiers, to predict customer behaviors based on the prepared dataset.
+
+3. **Evaluation**: 
+   - Assesses the performance of each trained model using key metrics such as accuracy, F1 score, and ROC AUC, allowing for an informed comparison of model effectiveness.
+
+4. **Interpretability**:
+   - Utilizes **SHAP** (SHapley Additive exPlanations) to explain the output of machine learning models, providing insights into feature importance and how different features impact predictions. This helps in understanding the decision-making process of the models.
+
+5. **Documentation**:
+   - Implements **Sphinx** for comprehensive project documentation, making it easier for users to understand the project structure, usage, and functionalities. Sphinx allows for easy generation of documentation from the codebase, ensuring that the project is well-documented and maintainable.
+
+6. **Tracking**: 
+   - Utilizes **MLflow** for versioning and tracking model parameters, metrics, and artifacts throughout the machine learning lifecycle, ensuring reproducibility and transparency in experiments.
+
+7. **Deployment**: 
+   - Implements **Docker** for containerization, facilitating easy deployment and management of the machine learning models in production environments.
+
+
+This comprehensive approach ensures that the project is not only focused on building models but also on maintaining a robust and scalable machine learning workflow, with an emphasis on interpretability and documentation.
 
 ## Setup and Environment
 
@@ -73,6 +93,11 @@ The `evaluate.py` script loads each trained model, makes predictions on the test
 Metrics are aggregated in a results summary for easy comparison.
 
 ## Deployment with MLflow
+Run This Command to install MLflow
+
+```bash
+pip install mlflow
+```
 
 MLflow manages the entire machine learning lifecycle, including:
 
@@ -87,10 +112,6 @@ mlflow ui
 ```
 
 Access the UI at http://127.0.0.1:5000 to monitor experiment logs and manage models.
-
-## Model Tracking
-
-To keep track of model versions and create new ones only when models are updated, MLflow’s model registry and experiment tracking functionalities are used. Code to run the full pipeline is in `main.py`.
 
 ## Dockerization
 
@@ -107,3 +128,55 @@ This project uses Docker to ensure reproducibility and consistent deployment.
    docker run -p 5000:5000 ecommerce-prediction
     ```
     This will start an MLflow tracking server in a container to track and manage experiments.
+
+## Documentation with Sphinx
+
+This project utilizes Sphinx for generating documentation. To build the documentation, navigate to the docs/ directory and run:
+
+### 1. Install Sphinx
+
+To get started with Sphinx, you need to install it first. You can do this using pip:
+
+```bash
+pip install sphinx
+```
+
+### 2.  Initialize Sphinx
+Once Sphinx is installed, navigate to your project directory and run the following command to initialize Sphinx:
+
+```bash
+sphinx-quickstart
+```
+This command will prompt you with a series of questions to configure your Sphinx project.
+
+After answering the prompts, Sphinx will create the necessary directories and files in a new `docs` folder.
+
+### 3. Build Documentation
+To generate HTML documentation, run the following command from the `docs` directory:
+```bash
+make html
+```
+This command creates HTML documentation in the `docs/build/html` directory.
+
+
+## Model Interpretability with SHAP
+
+To enhance model interpretability, this project incorporates SHAP (SHapley Additive exPlanations). SHAP values help understand the impact of each feature on the model's predictions, providing insights into model behavior.
+
+Example output:
+<div align="center">
+<h2>WaterFall plot</h2>
+    <img src="SHAP output/WaterFall.png" alt="Description of Image" />
+</div>
+<div align="center">
+<h2>Beeswarm plot</h2>
+    <img src="SHAP output/Beeswarm plot.png" alt="Description of Image" />
+</div>
+<div align="center">
+<h2>Dependence plot</h2>
+    <img src="SHAP output/Dependence plot.png" alt="Description of Image" />
+</div>
+<div align="center">
+<h2>Mean SHAP plot</h2>
+    <img src="SHAP output/Mean SHAP plot.png" alt="Description of Image" />
+</div>

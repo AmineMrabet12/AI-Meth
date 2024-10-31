@@ -9,9 +9,9 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../project_code'))  # Adjust based on your project structure
 
-project = 'test'
-copyright = '2024, test'
-author = 'test'
+project = 'AI-Meth - Churn Detection'
+copyright = '2024, Mohamed Amine MRABET - Vinay KUMAR'
+author = 'Mohamed Amine MRABET - Vinay KUMAR'
 release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------

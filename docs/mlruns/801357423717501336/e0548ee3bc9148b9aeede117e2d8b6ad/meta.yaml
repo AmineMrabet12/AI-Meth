@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/e0548ee3bc9148b9aeede117e2d8b6ad/artifacts
+end_time: 1730409925361
+entry_point_name: ''
+experiment_id: '801357423717501336'
+lifecycle_stage: active
+run_id: e0548ee3bc9148b9aeede117e2d8b6ad
+run_name: Naive Bayes
+run_uuid: e0548ee3bc9148b9aeede117e2d8b6ad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730409925344
+status: 3
+tags: []
+user_id: mohamedaminemrabet

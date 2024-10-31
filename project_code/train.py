@@ -8,13 +8,14 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from xgboost import XGBClassifier
 
+
 def train(X_train, y_train):
     """
     Train and register multiple classification models using MLflow.
 
-    This function trains a variety of classification models on the given training data, 
-    logs their parameters to MLflow, saves each model as a file, logs the model file 
-    as an artifact in MLflow, and registers the model in the MLflow Model Registry. 
+    This function trains a variety of classification models on the given training data,
+    logs their parameters to MLflow, saves each model as a file, logs the model file
+    as an artifact in MLflow, and registers the model in the MLflow Model Registry.
     If the model already exists in the registry, a new version is created.
 
     Args:
@@ -36,7 +37,7 @@ def train(X_train, y_train):
         None
 
     Raises:
-        mlflow.exceptions.RestException: If there is an issue with model registration in MLflow, 
+        mlflow.exceptions.RestException: If there is an issue with model registration in MLflow,
         except when the model already exists (in which case a new version is created automatically).
 
     Example:
@@ -45,12 +46,12 @@ def train(X_train, y_train):
 
     Notes:
         - Model parameters are logged for each model that supports `get_params`.
-        - Models are saved in the `models` folder, with each model file named after its respective 
+        - Models are saved in the `models` folder, with each model file named after its respective
           model type (e.g., 'Logistic Regression.joblib').
-        - Models are registered in MLflow under their respective names, and if a model with the 
+        - Models are registered in MLflow under their respective names, and if a model with the
           same name exists, MLflow creates a new version.
     """
-    
+
     models = {
         'Logistic Regression': LogisticRegression(),
         'SVM': SVC(probability=True),
@@ -66,12 +67,12 @@ def train(X_train, y_train):
         with mlflow.start_run(run_name=model_name):
             if hasattr(model, "get_params"):
                 mlflow.log_params(model.get_params())
-            
+
             # Train the model
             model.fit(X_train, y_train)
 
             # Save model
-            model_path = f"../models/{model_name}.joblib"
+            model_path = f"models/{model_name}.joblib"
             dump(model, model_path)
             # Log model path as artifact
             mlflow.log_artifact(model_path, artifact_path="models")
@@ -80,7 +81,7 @@ def train(X_train, y_train):
 
             # Register the model, and if it exists, create a new version
             try:
-                registered_model = mlflow.register_model(model_uri, model_name)
+                mlflow.register_model(model_uri, model_name)
             except mlflow.exceptions.RestException:
                 # Model already registered; MLflow will handle new versions automatically
                 pass

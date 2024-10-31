@@ -1,0 +1,196 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>main &mdash; AI-Meth - Churn Detection 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AI-Meth - Churn Detection
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AI-Meth - Churn Detection</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">main</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for main</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">data_preparation</span> <span class="kn">import</span> <span class="n">prepare</span>
+<span class="kn">from</span> <span class="nn">preprocessing</span> <span class="kn">import</span> <span class="n">preprocess</span>
+<span class="kn">from</span> <span class="nn">train</span> <span class="kn">import</span> <span class="n">train</span>
+<span class="kn">from</span> <span class="nn">evaluation</span> <span class="kn">import</span> <span class="n">evaluate</span>
+<span class="kn">import</span> <span class="nn">mlflow</span>
+
+
+<div class="viewcode-block" id="run">
+<a class="viewcode-back" href="../project_code.html#main.run">[docs]</a>
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This script automates the entire machine learning pipeline for an E-commerce dataset, </span>
+<span class="sd">    including data preparation, preprocessing, model training, evaluation, and result reporting.</span>
+<span class="sd">    The pipeline is tracked and logged using MLflow for experiment management.</span>
+
+<span class="sd">    Workflow:</span>
+<span class="sd">    1. Configures MLflow with a specified experiment name.</span>
+<span class="sd">    2. Loads and prepares the data from an Excel file.</span>
+<span class="sd">    3. Preprocesses the data by encoding categorical columns and scaling features.</span>
+<span class="sd">    4. Trains multiple machine learning models.</span>
+<span class="sd">    5. Evaluates the trained models and logs the results.</span>
+<span class="sd">    6. Summarizes evaluation metrics and displays them in a sorted DataFrame.</span>
+
+<span class="sd">    Modules Used:</span>
+<span class="sd">        - `prepare` from `data_preparation`: Cleans and preprocesses the data.</span>
+<span class="sd">        - `preprocess` from `preprocessing`: Encodes categorical columns and scales features.</span>
+<span class="sd">        - `train` from `train`: Trains specified machine learning models on the dataset.</span>
+<span class="sd">        - `evaluate` from `evaluation`: Calculates evaluation metrics for each model.</span>
+
+<span class="sd">    MLflow Configuration:</span>
+<span class="sd">        - Sets tracking URI and experiment name for MLflow.</span>
+<span class="sd">        - Logs models, metrics, and artifacts during training and evaluation.</span>
+
+<span class="sd">    Output:</span>
+<span class="sd">        - Prints status updates and the resulting evaluation metrics for each model.</span>
+<span class="sd">        - Displays a sorted summary DataFrame of model performance based on &#39;ROC AUC&#39;.</span>
+
+<span class="sd">    Dependencies:</span>
+<span class="sd">        - Requires `mlflow`, `pandas`, and `sklearn`.</span>
+
+<span class="sd">    Example Usage:</span>
+<span class="sd">        Run this script to train and evaluate models on the specified E-commerce dataset:</span>
+<span class="sd">            $ python main_script.py</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Configure MLflow tracking and experiment</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_tracking_uri</span><span class="p">(</span><span class="s2">&quot;mlruns&quot;</span><span class="p">)</span>
+    <span class="n">experiment_name</span> <span class="o">=</span> <span class="s2">&quot;AI-Meth Xp-V1&quot;</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">set_experiment</span><span class="p">(</span><span class="n">experiment_name</span><span class="p">)</span>
+
+    <span class="c1"># Load and prepare data</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/E Commerce Dataset.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;E Comm&#39;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;################### Starting Data Preparation ###################&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">,</span> <span class="n">col_to_encode</span> <span class="o">=</span> <span class="n">prepare</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...DONE&#39;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;################### Starting Data Preprocessing #################&#39;</span><span class="p">)</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col_to_encode</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...DONE&#39;</span><span class="p">)</span>
+    <span class="c1"># Train models</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;################### Starting training ###########################&#39;</span><span class="p">)</span>
+
+    <span class="n">train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...DONE&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Collect model paths for evaluation</span>
+    <span class="n">model_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;models&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span> <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;models&#39;</span><span class="p">)]</span>
+
+    <span class="c1"># Evaluate models</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;################### Starting Evaluation #########################&#39;</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...DONE&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Print summary results</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;################### Results DataFrame ###########################&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="n">results_df</span> <span class="o">=</span> <span class="n">results_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;ROC AUC&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">results_df</span><span class="p">[[</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;F1 Score&#39;</span><span class="p">,</span> <span class="s1">&#39;ROC AUC&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">results_df</span><span class="p">[[</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;F1 Score&#39;</span><span class="p">,</span> <span class="s1">&#39;ROC AUC&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">results_df</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Mohamed Amine MRABET - Vinay KUMAR.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

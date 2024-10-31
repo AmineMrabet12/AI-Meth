@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>project_code package &mdash; test 1.0.0 documentation</title>
+  <title>project_code package &mdash; AI-Meth - Churn Detection 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -31,7 +31,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            test
+            AI-Meth - Churn Detection
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -54,7 +54,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#evaluation.evaluate"><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-main">main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-main">main module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#main.run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#module-preprocessing">preprocessing module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#preprocessing.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess()</span></code></a></li>
 </ul>
@@ -75,7 +78,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">test</a>
+          <a href="index.html">AI-Meth - Churn Detection</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -198,6 +201,49 @@ using zero probabilities.</p></li>
 </section>
 <section id="module-main">
 <span id="main-module"></span><h2>main module<a class="headerlink" href="#module-main" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="main.run">
+<span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.run" title="Link to this definition"></a></dt>
+<dd><p>This script automates the entire machine learning pipeline for an E-commerce dataset,
+including data preparation, preprocessing, model training, evaluation, and result reporting.
+The pipeline is tracked and logged using MLflow for experiment management.</p>
+<p>Workflow:
+1. Configures MLflow with a specified experiment name.
+2. Loads and prepares the data from an Excel file.
+3. Preprocesses the data by encoding categorical columns and scaling features.
+4. Trains multiple machine learning models.
+5. Evaluates the trained models and logs the results.
+6. Summarizes evaluation metrics and displays them in a sorted DataFrame.</p>
+<dl class="simple">
+<dt>Modules Used:</dt><dd><ul class="simple">
+<li><p><cite>prepare</cite> from <cite>data_preparation</cite>: Cleans and preprocesses the data.</p></li>
+<li><p><cite>preprocess</cite> from <cite>preprocessing</cite>: Encodes categorical columns and scales features.</p></li>
+<li><p><cite>train</cite> from <cite>train</cite>: Trains specified machine learning models on the dataset.</p></li>
+<li><p><cite>evaluate</cite> from <cite>evaluation</cite>: Calculates evaluation metrics for each model.</p></li>
+</ul>
+</dd>
+<dt>MLflow Configuration:</dt><dd><ul class="simple">
+<li><p>Sets tracking URI and experiment name for MLflow.</p></li>
+<li><p>Logs models, metrics, and artifacts during training and evaluation.</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>Prints status updates and the resulting evaluation metrics for each model.</p></li>
+<li><p>Displays a sorted summary DataFrame of model performance based on ‘ROC AUC’.</p></li>
+</ul>
+</dd>
+<dt>Dependencies:</dt><dd><ul class="simple">
+<li><p>Requires <cite>mlflow</cite>, <cite>pandas</cite>, and <cite>sklearn</cite>.</p></li>
+</ul>
+</dd>
+<dt>Example Usage:</dt><dd><dl class="simple">
+<dt>Run this script to train and evaluate models on the specified E-commerce dataset:</dt><dd><p>$ python main_script.py</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-preprocessing">
 <span id="preprocessing-module"></span><h2>preprocessing module<a class="headerlink" href="#module-preprocessing" title="Link to this heading"></a></h2>
@@ -325,7 +371,7 @@ same name exists, MLflow creates a new version.</p></li>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, test.</p>
+    <p>&#169; Copyright 2024, Mohamed Amine MRABET - Vinay KUMAR.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

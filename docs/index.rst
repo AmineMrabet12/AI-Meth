@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-test documentation
+AI-Meth - Churn Detection documentation
 ==================
 
 Add your content using ``reStructuredText`` syntax. See the

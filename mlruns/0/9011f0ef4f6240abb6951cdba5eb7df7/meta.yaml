@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/9011f0ef4f6240abb6951cdba5eb7df7/artifacts
+end_time: 1730338714105
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9011f0ef4f6240abb6951cdba5eb7df7
+run_name: Random Forest
+run_uuid: 9011f0ef4f6240abb6951cdba5eb7df7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730338713814
+status: 3
+tags: []
+user_id: mohamedaminemrabet

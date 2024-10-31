@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/149679162216026815/1e3b353ee4b74d9e94fa605b31d9c94a/artifacts
+end_time: 1730338717825
+entry_point_name: ''
+experiment_id: '149679162216026815'
+lifecycle_stage: active
+run_id: 1e3b353ee4b74d9e94fa605b31d9c94a
+run_name: gentle-finch-185
+run_uuid: 1e3b353ee4b74d9e94fa605b31d9c94a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730338715052
+status: 3
+tags: []
+user_id: mohamedaminemrabet

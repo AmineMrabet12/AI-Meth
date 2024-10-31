@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/b9786c86758a4437803e7757d5cae355/artifacts
+end_time: 1730338714608
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b9786c86758a4437803e7757d5cae355
+run_name: KNN
+run_uuid: b9786c86758a4437803e7757d5cae355
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730338714599
+status: 3
+tags: []
+user_id: mohamedaminemrabet

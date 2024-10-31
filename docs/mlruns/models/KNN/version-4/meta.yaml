@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1730408683312
+current_stage: None
+description: null
+last_updated_timestamp: 1730408683312
+name: KNN
+run_id: 85a4f161b4ca44d2909152c4f1c0b6fc
+run_link: null
+source: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/85a4f161b4ca44d2909152c4f1c0b6fc/artifacts/KNN
+status: READY
+status_message: null
+storage_location: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/85a4f161b4ca44d2909152c4f1c0b6fc/artifacts/KNN
+user_id: null
+version: 4

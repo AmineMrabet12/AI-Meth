@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>train &mdash; test 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            test
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">test</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">train</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for train</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">mlflow</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">dump</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">GradientBoostingClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+
+<div class="viewcode-block" id="train">
+<a class="viewcode-back" href="../project_code.html#train.train">[docs]</a>
+<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Train and register multiple classification models using MLflow.</span>
+
+<span class="sd">    This function trains a variety of classification models on the given training data, </span>
+<span class="sd">    logs their parameters to MLflow, saves each model as a file, logs the model file </span>
+<span class="sd">    as an artifact in MLflow, and registers the model in the MLflow Model Registry. </span>
+<span class="sd">    If the model already exists in the registry, a new version is created.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X_train (numpy.ndarray or pandas.DataFrame): The training data features used for model training.</span>
+<span class="sd">        y_train (numpy.ndarray or pandas.Series): The target labels for the training data.</span>
+
+<span class="sd">    Models:</span>
+<span class="sd">        The function trains the following models:</span>
+<span class="sd">        - Logistic Regression</span>
+<span class="sd">        - Support Vector Machine (SVM)</span>
+<span class="sd">        - Decision Tree</span>
+<span class="sd">        - Random Forest</span>
+<span class="sd">        - Gradient Boosting</span>
+<span class="sd">        - K-Nearest Neighbors (KNN)</span>
+<span class="sd">        - Naive Bayes</span>
+<span class="sd">        - XGBoost</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        mlflow.exceptions.RestException: If there is an issue with model registration in MLflow, </span>
+<span class="sd">        except when the model already exists (in which case a new version is created automatically).</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; X_train, y_train = load_training_data()</span>
+<span class="sd">        &gt;&gt;&gt; train(X_train, y_train)</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        - Model parameters are logged for each model that supports `get_params`.</span>
+<span class="sd">        - Models are saved in the `models` folder, with each model file named after its respective </span>
+<span class="sd">          model type (e.g., &#39;Logistic Regression.joblib&#39;).</span>
+<span class="sd">        - Models are registered in MLflow under their respective names, and if a model with the </span>
+<span class="sd">          same name exists, MLflow creates a new version.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Logistic Regression&#39;</span><span class="p">:</span> <span class="n">LogisticRegression</span><span class="p">(),</span>
+        <span class="s1">&#39;SVM&#39;</span><span class="p">:</span> <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="s1">&#39;Decision Tree&#39;</span><span class="p">:</span> <span class="n">DecisionTreeClassifier</span><span class="p">(),</span>
+        <span class="s1">&#39;Random Forest&#39;</span><span class="p">:</span> <span class="n">RandomForestClassifier</span><span class="p">(),</span>
+        <span class="s1">&#39;Gradient Boosting&#39;</span><span class="p">:</span> <span class="n">GradientBoostingClassifier</span><span class="p">(),</span>
+        <span class="s1">&#39;KNN&#39;</span><span class="p">:</span> <span class="n">KNeighborsClassifier</span><span class="p">(),</span>
+        <span class="s1">&#39;Naive Bayes&#39;</span><span class="p">:</span> <span class="n">GaussianNB</span><span class="p">(),</span>
+        <span class="s1">&#39;XGBoost&#39;</span><span class="p">:</span> <span class="n">XGBClassifier</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">run_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;get_params&quot;</span><span class="p">):</span>
+                <span class="n">mlflow</span><span class="o">.</span><span class="n">log_params</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">())</span>
+            
+            <span class="c1"># Train the model</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+            <span class="c1"># Save model</span>
+            <span class="n">model_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;../models/</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">.joblib&quot;</span>
+            <span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+            <span class="c1"># Log model path as artifact</span>
+            <span class="n">mlflow</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">artifact_path</span><span class="o">=</span><span class="s2">&quot;models&quot;</span><span class="p">)</span>
+
+            <span class="n">model_uri</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;runs:/</span><span class="si">{</span><span class="n">mlflow</span><span class="o">.</span><span class="n">active_run</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="c1"># Register the model, and if it exists, create a new version</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">registered_model</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">register_model</span><span class="p">(</span><span class="n">model_uri</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RestException</span><span class="p">:</span>
+                <span class="c1"># Model already registered; MLflow will handle new versions automatically</span>
+                <span class="k">pass</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, test.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

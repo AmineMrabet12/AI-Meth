@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/47d5c59d7589425797eaad73d1c6e91b/artifacts
+end_time: 1730408516342
+entry_point_name: ''
+experiment_id: '801357423717501336'
+lifecycle_stage: active
+run_id: 47d5c59d7589425797eaad73d1c6e91b
+run_name: KNN
+run_uuid: 47d5c59d7589425797eaad73d1c6e91b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730408516328
+status: 3
+tags: []
+user_id: mohamedaminemrabet

@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1730408938240
+current_stage: None
+description: null
+last_updated_timestamp: 1730408938240
+name: Naive Bayes
+run_id: a52bcd7589dd4e2ca4b5ca54413ee16c
+run_link: null
+source: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/a52bcd7589dd4e2ca4b5ca54413ee16c/artifacts/Naive
+  Bayes
+status: READY
+status_message: null
+storage_location: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/a52bcd7589dd4e2ca4b5ca54413ee16c/artifacts/Naive
+  Bayes
+user_id: null
+version: 5

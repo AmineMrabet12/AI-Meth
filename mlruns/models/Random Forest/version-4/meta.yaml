@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1730403253733
+current_stage: None
+description: null
+last_updated_timestamp: 1730403253733
+name: Random Forest
+run_id: 5a046ebf28db4fb58722aeb97ff4fb66
+run_link: null
+source: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/763808383561387032/5a046ebf28db4fb58722aeb97ff4fb66/artifacts/Random
+  Forest
+status: READY
+status_message: null
+storage_location: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/763808383561387032/5a046ebf28db4fb58722aeb97ff4fb66/artifacts/Random
+  Forest
+user_id: null
+version: 4

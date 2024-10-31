@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>project_code package &mdash; test 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Project" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            test
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Project</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">project_code package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-data_preparation">data_preparation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data_preparation.prepare"><code class="docutils literal notranslate"><span class="pre">prepare()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-evaluation">evaluation module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#evaluation.evaluate"><code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-main">main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-preprocessing">preprocessing module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preprocessing.preprocess"><code class="docutils literal notranslate"><span class="pre">preprocess()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-train">train module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#train.train"><code class="docutils literal notranslate"><span class="pre">train()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">test</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Project</a></li>
+      <li class="breadcrumb-item active">project_code package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/project_code.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="project-code-package">
+<h1>project_code package<a class="headerlink" href="#project-code-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-data_preparation">
+<span id="data-preparation-module"></span><h2>data_preparation module<a class="headerlink" href="#module-data_preparation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="data_preparation.prepare">
+<span class="sig-prename descclassname"><span class="pre">data_preparation.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_preparation.html#prepare"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_preparation.prepare" title="Link to this definition"></a></dt>
+<dd><p>Prepares the input DataFrame for further processing by dropping unnecessary columns,
+filling missing values with the most frequent values, and identifying categorical columns
+for encoding.</p>
+<p>This function performs the following steps:
+1. Drops the <cite>CustomerID</cite> column as it is not needed for analysis.
+2. Prints the most frequent values for specific columns.
+3. Fills missing values in these columns with their respective most frequent (mode) values.
+4. Identifies columns with object data types for one-hot encoding in future steps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – The input DataFrame containing customer data to prepare.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A tuple containing:</dt><dd><ul class="simple">
+<li><p>df (pandas.DataFrame): The DataFrame with missing values filled.</p></li>
+<li><p>col_to_encode (list of str): List of column names with object data type for encoding.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">load_customer_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_prepared</span><span class="p">,</span> <span class="n">col_to_encode</span> <span class="o">=</span> <span class="n">prepare</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Assumes the DataFrame contains columns: ‘Tenure’, ‘WarehouseToHome’, ‘HourSpendOnApp’,
+‘OrderAmountHikeFromlastYear’, ‘CouponUsed’, ‘OrderCount’, and ‘DaySinceLastOrder’.</p></li>
+<li><p>The function prints the most frequent values for specified columns.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-evaluation">
+<span id="evaluation-module"></span><h2>evaluation module<a class="headerlink" href="#module-evaluation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="evaluation.evaluate">
+<span class="sig-prename descclassname"><span class="pre">evaluation.</span></span><span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_paths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evaluation.html#evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evaluation.evaluate" title="Link to this definition"></a></dt>
+<dd><p>Evaluate multiple models on test data and log the results to MLflow.</p>
+<p>This function loads models from the specified paths, makes predictions on the test data,
+calculates evaluation metrics (accuracy, F1 score, and ROC AUC), logs these metrics and
+the model to MLflow, and returns a summary of the results for each model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> (<em>numpy.ndarray</em><em> or </em><em>pandas.DataFrame</em>) – The training data features.
+Used as an input example for logging the model to MLflow.</p></li>
+<li><p><strong>X_test</strong> (<em>numpy.ndarray</em><em> or </em><em>pandas.DataFrame</em>) – The test data features on which predictions
+are made by the models.</p></li>
+<li><p><strong>y_test</strong> (<em>numpy.ndarray</em><em> or </em><em>pandas.Series</em>) – The true labels for the test data.</p></li>
+<li><p><strong>model_paths</strong> (<em>list</em><em> of </em><em>str</em>) – A list of file paths to the serialized model files to be evaluated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing a dictionary for each model with keys <cite>Model</cite>, <cite>Accuracy</cite>,
+<cite>F1 Score</cite>, and <cite>ROC AUC</cite>, representing the model name and its corresponding performance metrics.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If any model file in <cite>model_paths</cite> cannot be found.</p></li>
+<li><p><strong>Exception</strong> – If there is an issue with loading or evaluating a model.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model_paths</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;models/model1.joblib&quot;</span><span class="p">,</span> <span class="s2">&quot;models/model2.joblib&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="go">[{&#39;Model&#39;: &#39;model1&#39;, &#39;Accuracy&#39;: 0.85, &#39;F1 Score&#39;: 0.84, &#39;ROC AUC&#39;: 0.88},</span>
+<span class="go"> {&#39;Model&#39;: &#39;model2&#39;, &#39;Accuracy&#39;: 0.82, &#39;F1 Score&#39;: 0.81, &#39;ROC AUC&#39;: 0.85}]</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>If a model does not support probability prediction, the ROC AUC score will be calculated
+using zero probabilities.</p></li>
+<li><p>Non-model files in <cite>model_paths</cite> are skipped with a warning message printed.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-main">
+<span id="main-module"></span><h2>main module<a class="headerlink" href="#module-main" title="Link to this heading"></a></h2>
+</section>
+<section id="module-preprocessing">
+<span id="preprocessing-module"></span><h2>preprocessing module<a class="headerlink" href="#module-preprocessing" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="preprocessing.preprocess">
+<span class="sig-prename descclassname"><span class="pre">preprocessing.</span></span><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_to_encode</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/preprocessing.html#preprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#preprocessing.preprocess" title="Link to this definition"></a></dt>
+<dd><p>Preprocess the input DataFrame by applying one-hot encoding to specified columns,
+scaling features, and splitting the data into training and test sets.</p>
+<p>This function performs the following preprocessing steps:
+1. One-hot encodes the specified categorical columns.
+2. Splits the data into features (X) and target (y).
+3. Splits X and y into training and test sets.
+4. Scales the features using standard scaling.
+5. Saves the encoder and scaler objects for future use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – The input DataFrame containing the dataset to preprocess.</p></li>
+<li><p><strong>col_to_encode</strong> (<em>list</em><em> of </em><em>str</em>) – List of column names to be one-hot encoded.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A tuple containing:</dt><dd><ul class="simple">
+<li><p>X_train (numpy.ndarray): The scaled training data features.</p></li>
+<li><p>X_test (numpy.ndarray): The scaled test data features.</p></li>
+<li><p>y_train (pandas.Series): The training data target labels.</p></li>
+<li><p>y_test (pandas.Series): The test data target labels.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Saves:</dt><dd><ul class="simple">
+<li><p>Encoder as <cite>OneHotEncoder.joblib</cite> in the <cite>models</cite> directory.</p></li>
+<li><p>Scaler as <cite>StandardScaler.joblib</cite> in the <cite>models</cite> directory.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_to_encode</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PreferredLoginDevice&#39;</span><span class="p">,</span> <span class="s1">&#39;PreferredPaymentMode&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col_to_encode</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The target column <cite>Churn</cite> is assumed to be present in the input DataFrame.</p></li>
+<li><p>The function uses a test size of 20% and a random state of 42 for reproducibility.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-train">
+<span id="train-module"></span><h2>train module<a class="headerlink" href="#module-train" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="train.train">
+<span class="sig-prename descclassname"><span class="pre">train.</span></span><span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/train.html#train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#train.train" title="Link to this definition"></a></dt>
+<dd><p>Train and register multiple classification models using MLflow.</p>
+<p>This function trains a variety of classification models on the given training data,
+logs their parameters to MLflow, saves each model as a file, logs the model file
+as an artifact in MLflow, and registers the model in the MLflow Model Registry.
+If the model already exists in the registry, a new version is created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> (<em>numpy.ndarray</em><em> or </em><em>pandas.DataFrame</em>) – The training data features used for model training.</p></li>
+<li><p><strong>y_train</strong> (<em>numpy.ndarray</em><em> or </em><em>pandas.Series</em>) – The target labels for the training data.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Models:</dt><dd><p>The function trains the following models:
+- Logistic Regression
+- Support Vector Machine (SVM)
+- Decision Tree
+- Random Forest
+- Gradient Boosting
+- K-Nearest Neighbors (KNN)
+- Naive Bayes
+- XGBoost</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>mlflow.exceptions.RestException</strong> – If there is an issue with model registration in MLflow,</p></li>
+<li><p><strong>except when the model already exists</strong><strong> (</strong><strong>in which case a new version is created automatically</strong><strong>)</strong><strong>.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">load_training_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">train</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Model parameters are logged for each model that supports <cite>get_params</cite>.</p></li>
+<li><p>Models are saved in the <cite>models</cite> folder, with each model file named after its respective
+model type (e.g., ‘Logistic Regression.joblib’).</p></li>
+<li><p>Models are registered in MLflow under their respective names, and if a model with the
+same name exists, MLflow creates a new version.</p></li>
+</ul>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, test.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

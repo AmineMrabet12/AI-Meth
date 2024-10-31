@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/4847822ea4484f829ff04940eaa9d125/artifacts
+end_time: 1730409183724
+entry_point_name: ''
+experiment_id: '801357423717501336'
+lifecycle_stage: active
+run_id: 4847822ea4484f829ff04940eaa9d125
+run_name: Logistic Regression
+run_uuid: 4847822ea4484f829ff04940eaa9d125
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730409182137
+status: 3
+tags: []
+user_id: mohamedaminemrabet

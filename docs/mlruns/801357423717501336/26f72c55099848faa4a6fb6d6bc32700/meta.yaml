@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/26f72c55099848faa4a6fb6d6bc32700/artifacts
+end_time: 1730408994575
+entry_point_name: ''
+experiment_id: '801357423717501336'
+lifecycle_stage: active
+run_id: 26f72c55099848faa4a6fb6d6bc32700
+run_name: SVM
+run_uuid: 26f72c55099848faa4a6fb6d6bc32700
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730408992378
+status: 3
+tags: []
+user_id: mohamedaminemrabet

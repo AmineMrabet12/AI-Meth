@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/aa6c90c45e5f4ffcbaa1e921d89ff0cd/artifacts
+end_time: 1730408682476
+entry_point_name: ''
+experiment_id: '801357423717501336'
+lifecycle_stage: active
+run_id: aa6c90c45e5f4ffcbaa1e921d89ff0cd
+run_name: Decision Tree
+run_uuid: aa6c90c45e5f4ffcbaa1e921d89ff0cd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730408682446
+status: 3
+tags: []
+user_id: mohamedaminemrabet

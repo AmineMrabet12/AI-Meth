@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1730409169944
+current_stage: None
+description: null
+last_updated_timestamp: 1730409169944
+name: SVM
+run_id: b3a91640e8c446d28e1cb365e9419305
+run_link: null
+source: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/b3a91640e8c446d28e1cb365e9419305/artifacts/SVM
+status: READY
+status_message: null
+storage_location: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/docs/mlruns/801357423717501336/b3a91640e8c446d28e1cb365e9419305/artifacts/SVM
+user_id: null
+version: 7

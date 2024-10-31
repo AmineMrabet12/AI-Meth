@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>evaluation &mdash; test 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            test
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">test</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">evaluation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for evaluation</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="kn">import</span> <span class="nn">mlflow</span>
+<span class="kn">import</span> <span class="nn">mlflow.sklearn</span>
+<span class="kn">from</span> <span class="nn">mlflow.models.signature</span> <span class="kn">import</span> <span class="n">infer_signature</span>
+
+<div class="viewcode-block" id="evaluate">
+<a class="viewcode-back" href="../project_code.html#evaluation.evaluate">[docs]</a>
+<span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">model_paths</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evaluate multiple models on test data and log the results to MLflow.</span>
+
+<span class="sd">    This function loads models from the specified paths, makes predictions on the test data, </span>
+<span class="sd">    calculates evaluation metrics (accuracy, F1 score, and ROC AUC), logs these metrics and </span>
+<span class="sd">    the model to MLflow, and returns a summary of the results for each model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        X_train (numpy.ndarray or pandas.DataFrame): The training data features. </span>
+<span class="sd">            Used as an input example for logging the model to MLflow.</span>
+<span class="sd">        X_test (numpy.ndarray or pandas.DataFrame): The test data features on which predictions </span>
+<span class="sd">            are made by the models.</span>
+<span class="sd">        y_test (numpy.ndarray or pandas.Series): The true labels for the test data.</span>
+<span class="sd">        model_paths (list of str): A list of file paths to the serialized model files to be evaluated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list of dict: A list containing a dictionary for each model with keys `Model`, `Accuracy`, </span>
+<span class="sd">        `F1 Score`, and `ROC AUC`, representing the model name and its corresponding performance metrics.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        FileNotFoundError: If any model file in `model_paths` cannot be found.</span>
+<span class="sd">        Exception: If there is an issue with loading or evaluating a model.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; X_train, X_test, y_test = load_data()</span>
+<span class="sd">        &gt;&gt;&gt; model_paths = [&quot;models/model1.joblib&quot;, &quot;models/model2.joblib&quot;]</span>
+<span class="sd">        &gt;&gt;&gt; results = evaluate(X_train, X_test, y_test, model_paths)</span>
+<span class="sd">        &gt;&gt;&gt; print(results)</span>
+<span class="sd">        [{&#39;Model&#39;: &#39;model1&#39;, &#39;Accuracy&#39;: 0.85, &#39;F1 Score&#39;: 0.84, &#39;ROC AUC&#39;: 0.88},</span>
+<span class="sd">         {&#39;Model&#39;: &#39;model2&#39;, &#39;Accuracy&#39;: 0.82, &#39;F1 Score&#39;: 0.81, &#39;ROC AUC&#39;: 0.85}]</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        - If a model does not support probability prediction, the ROC AUC score will be calculated </span>
+<span class="sd">          using zero probabilities.</span>
+<span class="sd">        - Non-model files in `model_paths` are skipped with a warning message printed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">model_paths</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">7</span><span class="p">]</span>  <span class="c1"># Extracts model name from file path</span>
+
+        <span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">run_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
+            <span class="c1"># Make predictions</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+                <span class="n">y_pred_proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;predict_proba&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">))</span>
+                
+                <span class="c1"># Calculate metrics</span>
+                <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+                <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+                <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba</span><span class="p">)</span>
+                
+                <span class="c1"># Log the model with signature and example input</span>
+                <span class="n">signature</span> <span class="o">=</span> <span class="n">infer_signature</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">()</span>
+                <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">signature</span><span class="o">=</span><span class="n">signature</span><span class="p">,</span> <span class="n">input_example</span><span class="o">=</span><span class="n">X_train</span><span class="p">)</span>
+                
+                <span class="c1"># Log metrics</span>
+                <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+                <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">&quot;F1 Score&quot;</span><span class="p">,</span> <span class="n">f1</span><span class="p">)</span>
+                <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">&quot;ROC AUC&quot;</span><span class="p">,</span> <span class="n">roc_auc</span><span class="p">)</span>
+                
+                <span class="c1"># Append results for summary table</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s1">&#39;Model&#39;</span><span class="p">:</span> <span class="n">model_name</span><span class="p">,</span>
+                    <span class="s1">&#39;Accuracy&#39;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">,</span>
+                    <span class="s1">&#39;F1 Score&#39;</span><span class="p">:</span> <span class="n">f1</span><span class="p">,</span>
+                    <span class="s1">&#39;ROC AUC&#39;</span><span class="p">:</span> <span class="n">roc_auc</span>
+                <span class="p">})</span>
+
+            <span class="k">except</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;#############################&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;#### File is NOT A MODEL ####&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;#############################&#39;</span><span class="p">)</span>
+                <span class="k">pass</span>
+    
+    <span class="k">return</span> <span class="n">results</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, test.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

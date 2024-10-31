@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1730403254242
+current_stage: None
+description: null
+last_updated_timestamp: 1730403254242
+name: Gradient Boosting
+run_id: b0f91d695f484b9eb5de4bf78554199f
+run_link: null
+source: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/763808383561387032/b0f91d695f484b9eb5de4bf78554199f/artifacts/Gradient
+  Boosting
+status: READY
+status_message: null
+storage_location: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/763808383561387032/b0f91d695f484b9eb5de4bf78554199f/artifacts/Gradient
+  Boosting
+user_id: null
+version: 4

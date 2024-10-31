@@ -223,3 +223,7 @@ Example output:
 <h2>Mean SHAP plot</h2>
     <img src="SHAP output/Mean SHAP plot.png" alt="Description of Image" />
 </div>
+
+
+## Conclusion
+In summary, this project successfully demonstrates the application of machine learning to analyze e-commerce customer behavior, providing insights and predictions based on customer data. By leveraging a structured approach that includes data preparation, model training, evaluation, and interpretability with SHAP, alongside effective tracking and deployment via MLflow and Docker, we ensure a robust machine learning workflow. This comprehensive methodology not only enhances model performance but also facilitates easy reproducibility and maintainability of the project, making it a valuable resource for understanding customer dynamics in the e-commerce sector.

@@ -156,8 +156,51 @@ To generate HTML documentation, run the following command from the `docs` direct
 ```bash
 make html
 ```
-This command creates HTML documentation in the `docs/build/html` directory.
 
+This command creates HTML documentation in the `docs/build/html` directory.
+Directory wil look like this at the end
+```bash
+.
+├── Dockerfile
+├── README.md
+├── SHAP output
+│   └── ...
+├── data
+│   └── ...
+├── docs
+│   ├── Makefile
+│   ├── _build
+│   ├── _static
+│   ├── _templates
+│   ├── conf.py
+│   ├── index.rst
+│   ├── make.bat
+│   ├── modules.rst
+│   └── project_code.rst
+├── instructions
+│   └── ...
+├── mlruns
+│   ├── 0
+│   ├── 149679162216026815
+│   ├── 763808383561387032
+│   └── models
+├── models
+│   └── ...
+├── notebooks
+│   └── data.ipynb
+├── project_code
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── data_preparation.py
+│   ├── evaluation.py
+│   ├── main.py
+│   ├── preprocessing.py
+│   └── train.py
+├── report
+│   └── ...
+├── requirements.txt
+└── setup.cfg
+```
 
 ## Model Interpretability with SHAP
 

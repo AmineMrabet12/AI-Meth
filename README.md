@@ -8,7 +8,7 @@ This project analyzes e-commerce customer data to build machine learning models,
 - [Setup and Environment](#setup-and-environment)
 - [Data Preparation](#data-preparation)
 - [Training and Evaluation](#training-and-evaluation)
-- [Deployment with MLflow](#deployment-with-mlflow)
+- [Tracking with MLflow](#tracking-with-mlflow)
 - [Dockerization](#dockerization)
 - [Documentation with Sphinx](#documentation-with-sphinx)
 - [model interpretability with shap](#model-interpretability-with-shap)
@@ -92,7 +92,7 @@ The `evaluate.py` script loads each trained model, makes predictions on the test
 
 Metrics are aggregated in a results summary for easy comparison.
 
-## Deployment with MLflow
+## Tracking with MLflow
 Run This Command to install MLflow
 
 ```bash

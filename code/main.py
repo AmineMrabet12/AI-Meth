@@ -8,7 +8,7 @@ import mlflow
 
 # Configure MLflow tracking and experiment
 mlflow.set_tracking_uri("mlruns")
-experiment_name = "AI-Meth 1st Xp"
+experiment_name = "AI-Meth Xp-V1"
 mlflow.set_experiment(experiment_name)
 
 # Load and prepare data

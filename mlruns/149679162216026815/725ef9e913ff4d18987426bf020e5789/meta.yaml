@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/149679162216026815/725ef9e913ff4d18987426bf020e5789/artifacts
+end_time: 1730341542336
+entry_point_name: ''
+experiment_id: '149679162216026815'
+lifecycle_stage: active
+run_id: 725ef9e913ff4d18987426bf020e5789
+run_name: OneHotEncoder
+run_uuid: 725ef9e913ff4d18987426bf020e5789
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730341542328
+status: 3
+tags: []
+user_id: mohamedaminemrabet

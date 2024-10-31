@@ -1,0 +1,16 @@
+aliases: []
+creation_timestamp: 1730341717972
+current_stage: None
+description: null
+last_updated_timestamp: 1730341717972
+name: Decision Tree
+run_id: c82e40130cb54771a2acc0f1d1a5473a
+run_link: null
+source: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/763808383561387032/c82e40130cb54771a2acc0f1d1a5473a/artifacts/Decision
+  Tree
+status: READY
+status_message: null
+storage_location: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/763808383561387032/c82e40130cb54771a2acc0f1d1a5473a/artifacts/Decision
+  Tree
+user_id: null
+version: 3

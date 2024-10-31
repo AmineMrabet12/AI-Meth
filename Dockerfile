@@ -11,9 +11,9 @@ RUN pip install -r requirements.txt
 # Copy all necessary directories and files into the container
 COPY code/ /app/code/
 COPY data/ /app/data/
-COPY mlruns/ /app/mlruns/
+# COPY mlruns/ /app/mlruns/
 COPY models/ /app/models/
-COPY notebooks/ /app/notebooks/
+# COPY notebooks/ /app/notebooks/
 
 # Optional: Set an environment variable for MLflow if needed
 # ENV MLFLOW_TRACKING_URI sqlite:///mlruns/mlflow.db
@@ -22,4 +22,4 @@ COPY notebooks/ /app/notebooks/
 EXPOSE 5000
 
 # Optional: Set the default command if you have a main script, e.g., `main.py` in `code/`
-# CMD ["python", "code/main.py"]
+CMD ["python", "code/main.py"]

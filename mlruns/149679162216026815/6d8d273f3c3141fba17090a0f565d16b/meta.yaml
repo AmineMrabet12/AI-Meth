@@ -1,0 +1,15 @@
+artifact_uri: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/149679162216026815/6d8d273f3c3141fba17090a0f565d16b/artifacts
+end_time: 1730341544529
+entry_point_name: ''
+experiment_id: '149679162216026815'
+lifecycle_stage: active
+run_id: 6d8d273f3c3141fba17090a0f565d16b
+run_name: StandardScaler
+run_uuid: 6d8d273f3c3141fba17090a0f565d16b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1730341544522
+status: 3
+tags: []
+user_id: mohamedaminemrabet

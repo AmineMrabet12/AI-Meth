@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1730341537726
+current_stage: None
+description: null
+last_updated_timestamp: 1730341537726
+name: XGBoost
+run_id: 4d0f9e284d0a407a82e454ac16ebea96
+run_link: null
+source: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/149679162216026815/4d0f9e284d0a407a82e454ac16ebea96/artifacts/XGBoost
+status: READY
+status_message: null
+storage_location: /Users/mohamedaminemrabet/Documents/EPITA/AI-Meth/Project/mlruns/149679162216026815/4d0f9e284d0a407a82e454ac16ebea96/artifacts/XGBoost
+user_id: null
+version: 1

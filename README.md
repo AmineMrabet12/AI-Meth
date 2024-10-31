@@ -1,4 +1,4 @@
-# Project Title: E-Commerce Customer Behavior Analysis and Model Deployment
+# E-Commerce Customer Behavior Analysis and Model Deployment
 
 This project analyzes e-commerce customer data to build machine learning models, which are then evaluated and deployed in a production environment using `mlflow` for experiment tracking and Docker for containerization. The models predict customer behaviors, such as purchase intent, based on the features in the dataset.
 
